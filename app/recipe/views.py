@@ -58,7 +58,7 @@ class IngredientViewSet(mixins.ListModelMixin, viewsets.GenericViewSet):
     """Manager ingredients in the database"""
     serializer_class = serializers.IngredientSerializer
     queryset = Ingredient.objects.all()
-    IsAuthentication_classes = [TokenAuthentication]
+    authentication_classes = [TokenAuthentication]
     permission_classes = [IsAuthenticated]
 
     def get_queryset(self):
