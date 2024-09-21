@@ -1,8 +1,7 @@
 FROM python:3.10-alpine3.13
-LABEL maintainer="maintainer@example.com"
+LABEL maintainer="londonappdeveloper.com"
 
 ENV PYTHONUNBUFFERED 1
-ENV PATH="/script:/py/bin:$PATH"
 
 COPY ./requirements.txt /tmp/requirements.txt
 COPY ./requirements.dev.txt /tmp/requirements.dev.txt
@@ -30,6 +29,8 @@ RUN python -m venv /py && \
         chown -R django-user:django-user /vol && \
         chmod -R 755 /vol && \
         chmod -R +x /scripts
+
+ENV PATH="/scripts:/py/bin:$PATH"
 
 USER django-user
 
